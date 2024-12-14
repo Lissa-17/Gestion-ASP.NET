@@ -1,0 +1,36 @@
+@page
+@model GestionHopital.Pages_Prescriptions.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Prescription</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Prescription.prescription" class="form-control" />
+                <label asp-for="Prescription.prescription" for="floatingInput"></label>
+                <span asp-validation-for="Prescription.prescription" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Prescription.ConsultationId" class= "form-select" asp-items="ViewBag.ConsultationId"></select>
+                <label for="floatingInput">Consultation</label>
+                <span asp-validation-for="Prescription.ConsultationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index"class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

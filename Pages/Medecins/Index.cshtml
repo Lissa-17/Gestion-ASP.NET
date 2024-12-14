@@ -1,0 +1,80 @@
+@page
+@model GestionHopital.Pages_Medecins.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="mb-3">Liste des medecins</h1>
+
+<p>
+    <a asp-page="Create" class= "btn btn-primary"><i class="bi bi-plus-lg"></i></a>
+</p>
+<form method="get">
+    <select asp-for="SelectedSpecialty" asp-items="Model.Specialties" class="form-select" onchange="this.form.submit()">
+        <option value="">Filtrer par specialite</option>
+    </select>    
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Sexe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Adresse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medecin[0].Specialite)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Medecin) {
+    if(string.IsNullOrEmpty(Model.SelectedSpecialty) || item.Specialite == Model.SelectedSpecialty)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Specialite)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Edit</a> 
+                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.Id"><i class="bi bi-info-circle"></i> Info</a>
+                <a class="btn btn-danger"asp-page="./Delete" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+    }
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+@page
+@model GestionHopital.Pages_Consultations.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Consultation</h4>
+<hr />
+<div class="row">
+    <div class="col-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-3">
+                <select asp-for="Consultation.MedecinId" class ="form-select" asp-items="ViewBag.MedecinId"></select>
+                <label for="floatingInput" class="control-label">Medecin</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Consultation.PatientCode" class ="form-select" asp-items="ViewBag.PatientCode"></select>
+                <label for="floatingInput" class="control-label">Patient</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Consultation.Poids" class="form-control" />
+                <label for="floatingInput" asp-for="Consultation.Poids" class="control-label"></label>
+                <span asp-validation-for="Consultation.Poids" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Consultation.Hauteur" class="form-control" />
+                <label for="floatingInput" asp-for="Consultation.Hauteur" class="control-label"></label>
+                <span asp-validation-for="Consultation.Hauteur" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Consultation.Diagnostique" class="form-control" />
+                <label for="floatingInput" asp-for="Consultation.Diagnostique" class="control-label"></label>
+                <span asp-validation-for="Consultation.Diagnostique" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Consultation.Date_Consultation" class="form-control" type="date"/>
+                <label for="floatingInput" asp-for="Consultation.Date_Consultation" class="control-label"></label>
+                <span asp-validation-for="Consultation.Date_Consultation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index" class= "btn btn-secondary">Retour</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

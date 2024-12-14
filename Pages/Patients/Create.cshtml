@@ -1,0 +1,61 @@
+@page
+@model GestionHopital.Pages_Patients.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Patient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-floating mb-3">
+                <input asp-for="Patient.Nom" class="form-control" />
+                <label asp-for="Patient.Nom" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Patient.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Patient.Prenom" class="form-control" />
+                <label asp-for="Patient.Prenom" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Patient.Prenom" class="text-danger"></span>
+            </div>
+            <label asp-for="Patient.Sexe"></label>
+            <div class="form-check form-check-inline mb-3">
+                <input asp-for="Patient.Sexe" class="form-check-input" type="radio" value="Feminin">
+                <label class="form-check-label" for="inlineRadio1">Féminin</label>
+                <span asp-validation-for="Patient.Sexe" class="text-danger"></span>
+            </div>
+            <div class="form-check form-check-inline">
+                <input asp-for="Patient.Sexe" class="form-check-input" type="radio" value="Masculin">
+                <label class="form-check-label" for="inlineRadio2">Masculin</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Patient.Telephone" class="form-control" />
+                <label asp-for="Patient.Telephone" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Patient.Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Patient.Adresse" class="form-control" />
+                <label asp-for="Patient.Adresse" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Patient.Adresse" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Patient.Date_enregistrement" class="form-control" type="date" />
+                <label asp-for="Patient.Date_enregistrement" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Patient.Date_enregistrement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Retour</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

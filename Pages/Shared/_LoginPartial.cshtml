@@ -1,0 +1,30 @@
+@using GestionHopital.models;
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<AppUser> signIn;
+@inject UserManager<AppUser> user;
+
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav" style="marging-left: auto;">                        
+        @if(!signIn.IsSignedIn(User))
+        {        
+            <li class="nav-item">
+                  <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Login">LogIn</a>
+            </li>       
+        }
+        else
+        {        
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @user.GetUserAsync(User).Result.UserName
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-page="/Admin/Login" asp-page-handler="LogOut">LogOut</a></li>                                
+                </ul>    
+            </li>   
+        }              
+    </ul>
+</div>

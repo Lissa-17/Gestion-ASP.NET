@@ -1,0 +1,44 @@
+@page
+@model GestionHopital.Pages_Prescriptions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary"><i class="bi bi-plus-lg"></i></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @* @Html.DisplayNameFor(model => model.Prescription[0].prescription) *@
+                Prescription
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.Prescription[0].ConsultationId) *@
+                Consultation
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Prescription) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.prescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consultation.Details)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Edit</a> 
+                <a class="btn btn-info" asp-page="./Details" asp-route-id="@item.Id"><i class="bi bi-info-circle"></i> Info</a>
+                <a class="btn btn-danger"asp-page="./Delete" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

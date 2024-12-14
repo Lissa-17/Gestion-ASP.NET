@@ -1,0 +1,84 @@
+@page
+@model GestionHopital.Pages_Medecins.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Creer</h1>
+
+<h4>Medecin</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>            
+            <div class="form-floating mb-3">
+                <input asp-for="Medecin.Nom" class="form-control" />
+                <label asp-for="Medecin.Nom" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Medecin.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Medecin.Prenom" class="form-control" />
+                <label asp-for="Medecin.Prenom" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Medecin.Prenom" class="text-danger"></span>
+            </div>
+            <label asp-for="Medecin.Sexe"></label>
+            <div class="form-check form-check-inline mb-3">
+                <input asp-for="Medecin.Sexe" class="form-check-input" type="radio" value="Feminin">
+                <label class="form-check-label" for="inlineRadio1">Féminin</label>
+                <span asp-validation-for="Medecin.Sexe" class="text-danger"></span>
+            </div>
+            <div class="form-check form-check-inline">
+                <input asp-for="Medecin.Sexe" class="form-check-input" type="radio" value="Masculin">
+                <label class="form-check-label" for="inlineRadio2">Masculin</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Medecin.Telephone" class="form-control" />
+                <label asp-for="Medecin.Telephone" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Medecin.Telephone" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Medecin.Adresse" class="form-control" />
+                <label asp-for="Medecin.Adresse" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Medecin.Adresse" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Medecin.Email" class="form-control" />
+                <label asp-for="Medecin.Email" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Medecin.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select  asp-for ="Medecin.Specialite" class ="form-select">
+                        <option value ="Aucune">Aucune</option>
+                        <option value ="Pédiatrie">Pédiatrie</option>
+                        <option value ="Cardiologie">Cardiologie</option>
+                        <option value ="Dermatologie">Dermatologie</option>
+                        <option value ="Neurologie">Neurologie</option>
+                        <option value ="Chirurgie">Chirurgie</option>
+                        <option value ="Oncologie">Oncologie</option>
+                        <option value ="Gynécologie-obstétrique">Gynécologie-obstétrique</option>
+                        <option value ="Médecin interne">Médecin interne</option>
+                        <option value ="Orthopédie">Orthopédie</option>
+                        <option value ="Ophtalmologie">Ophtalmologie</option>
+                        <option value ="Oto-rhino-laryngologie(ORL)">Oto-rhino-laryngologie(ORL)</option>
+                        <option value ="Psychiatrie">Psychiatrie</option>
+                        <option value ="Radiologie">Radiologie</option>
+                        <option value ="Anesthésiologie">Anesthésiologie</option>
+                        <option value ="Médecin d'urgence">Médecin d'urgence</option>
+                        <option value ="Médecin du sport">Médecin du sport</option>
+                        </select>
+                <label asp-for="Medecin.Specialite" class="control-label" for="floatingInput"></label>
+                <span asp-validation-for="Medecin.Specialite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Retour</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
